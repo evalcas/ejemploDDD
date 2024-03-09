@@ -1,0 +1,12 @@
+digraph "ContextMapGraph" {
+graph ["imagepath"="/tmp/GraphvizJava"]
+"GestionClientesContext" ["margin"="0.3","orientation"="88","shape"="egg","fontsize"="16","style"="bold","label"="GestionClientesContext\n","fontname"="sans-serif"]
+"GestionEnviosContext" ["margin"="0.3","orientation"="17","shape"="egg","fontsize"="16","style"="bold","label"="GestionEnviosContext\n","fontname"="sans-serif"]
+"GestionOrdenesContext" ["margin"="0.3","orientation"="26","shape"="egg","fontsize"="16","style"="bold","label"="GestionOrdenesContext\n","fontname"="sans-serif"]
+"GestionClientesContext" -> "GestionEnviosContext" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS</font></td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"GestionOrdenesContext" -> "GestionClientesContext" ["fontsize"="12","style"="bold","label"="Partnership","dir"="none","fontname"="sans-serif"]
+}

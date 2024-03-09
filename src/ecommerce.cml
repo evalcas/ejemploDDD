@@ -1,0 +1,64 @@
+/* Example Context Map written with 'ContextMapper DSL' */ 
+
+BoundedContext ProductCatalogManagementContext implements ProductCatalogDomain
+BoundedContext CustomerManagementContext implements CustomerDomain
+BoundedContext OrdersManagementContext implements OrdersDomain
+BoundedContext InventoryManagementContext implements InventoryDomain 
+BoundedContext PaymentManagementContext implements PaymentDomain
+BoundedContext ShippingManagementContext implements ShippingDomain
+BoundedContext SecurityManagementContext implements SecurityDomain //Authentication and authorization
+
+
+ContextMap EcommerceACME {
+
+    type SYSTEM_LANDSCAPE
+    state TO_BE
+
+    /* Add bounded contexts to this context map: */ 
+    contains ProductCatalogManagementContext , CustomerManagementContext, OrdersManagementContext, InventoryManagementContext , PaymentManagementContext, ShippingManagementContext, SecurityManagementContext
+
+    /* Define the context relationships: */
+    ProductCatalogManagementContext Partnership OrdersManagementContext
+    ProductCatalogManagementContext Customer-Supplier CustomerManagementContext
+    ProductCatalogManagementContext Shared-Kernel InventoryManagementContext
+    CustomerManagementContext [D,ACL]<-[U,OHS,PL]  SecurityManagementContext
+    OrdersManagementContext Customer-Supplier PaymentManagementContext
+    OrdersManagementContext Customer-Supplier ShippingManagementContext
+    SecurityManagementContext [U,OHS]->[D,ACL] CustomerManagementContext
+    InventoryManagementContext [D,CF]<-[U,OHS,PL]  ShippingManagementContext    
+}
+
+
+Domain EcommerceACME {
+    Subdomain ProductCatalogDomain{
+      type = CORE_DOMAIN
+      domainVisionStatement = "Gestion del catalogo de productos"
+    }
+    Subdomain CustomerDomain{
+      type = SUPPORTING_DOMAIN
+      domainVisionStatement = "Gestion de clientes"
+    }
+    Subdomain OrdersDomain{
+      type = SUPPORTING_DOMAIN
+      domainVisionStatement = "Gestion de pedidos"
+    }
+    Subdomain InventoryDomain {
+		type = GENERIC_SUBDOMAIN
+    }
+    Subdomain PaymentDomain {
+		type = GENERIC_SUBDOMAIN
+    }
+    Subdomain ShippingDomain {
+		type = SUPPORTING_DOMAIN 
+    }
+    Subdomain SecurityDomain {
+		type = GENERIC_SUBDOMAIN
+    }
+    
+}
+
+}
+
+BoundedContext GestionClientesContext{
+
+}
