@@ -1,0 +1,38 @@
+/* Example Context Map written with 'ContextMapper DSL' */ 
+BoundedContext GestionProyectosContext implements GestionProyectosDomain
+BoundedContext GestionFondosContext implements GestionFondosDomain
+BoundedContext GestionSeguridadContext implements GestionSeguridadDomain
+
+
+ContextMap Investigacion {
+
+    type SYSTEM_LANDSCAPE
+    state TO_BE
+
+    /* Add bounded contexts to this context map: */ 
+    contains GestionFondosContext, GestionProyectosContext, GestionSeguridadContext
+    
+
+    /* Define the context relationships: */
+
+    GestionProyectosContext Partnership GestionFondosContext
+    GestionSeguridadContext [U,OHS]->[D,ACL] GestionProyectosContext
+}
+
+
+Domain Investigacion {
+    Subdomain GestionProyectosDomain{
+      type = CORE_DOMAIN
+      domainVisionStatement = "Gestion de los proyectos de investigacion"
+    }
+    Subdomain GestionFondosDomain{
+      type = SUPPORTING_DOMAIN
+      domainVisionStatement = "Gestion de fondos concursables"
+    }
+    Subdomain GestionSeguridadDomain{
+      type = GENERIC_SUBDOMAIN
+      domainVisionStatement = "Gestion de la seguridad"
+    }
+   
+    
+}
