@@ -56,9 +56,3 @@ Domain EcommerceACME {
     }
     
 }
-
-}
-
-BoundedContext GestionClientesContext{
-
-}

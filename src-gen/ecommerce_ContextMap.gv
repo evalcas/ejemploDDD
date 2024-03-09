@@ -1,12 +1,42 @@
 digraph "ContextMapGraph" {
 graph ["imagepath"="/tmp/GraphvizJava"]
-"GestionClientesContext" ["margin"="0.3","orientation"="88","shape"="egg","fontsize"="16","style"="bold","label"="GestionClientesContext\n","fontname"="sans-serif"]
-"GestionEnviosContext" ["margin"="0.3","orientation"="17","shape"="egg","fontsize"="16","style"="bold","label"="GestionEnviosContext\n","fontname"="sans-serif"]
-"GestionOrdenesContext" ["margin"="0.3","orientation"="26","shape"="egg","fontsize"="16","style"="bold","label"="GestionOrdenesContext\n","fontname"="sans-serif"]
-"GestionClientesContext" -> "GestionEnviosContext" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+"CustomerManagementContext" ["margin"="0.3","orientation"="96","shape"="egg","fontsize"="16","style"="bold","label"="CustomerManagementContext\n","fontname"="sans-serif"]
+"ProductCatalogManagementContext" ["margin"="0.3","orientation"="348","shape"="egg","fontsize"="16","style"="bold","label"="ProductCatalogManagementContext\n","fontname"="sans-serif"]
+"OrdersManagementContext" ["margin"="0.3","orientation"="58","shape"="egg","fontsize"="16","style"="bold","label"="OrdersManagementContext\n","fontname"="sans-serif"]
+"InventoryManagementContext" ["margin"="0.3","orientation"="155","shape"="egg","fontsize"="16","style"="bold","label"="InventoryManagementContext\n","fontname"="sans-serif"]
+"PaymentManagementContext" ["margin"="0.3","orientation"="127","shape"="egg","fontsize"="16","style"="bold","label"="PaymentManagementContext\n","fontname"="sans-serif"]
+"SecurityManagementContext" ["margin"="0.3","orientation"="116","shape"="egg","fontsize"="16","style"="bold","label"="SecurityManagementContext\n","fontname"="sans-serif"]
+"ShippingManagementContext" ["margin"="0.3","orientation"="27","shape"="egg","fontsize"="16","style"="bold","label"="ShippingManagementContext\n","fontname"="sans-serif"]
+"CustomerManagementContext" -> "ProductCatalogManagementContext" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
 <tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="Customer/Supplier","dir"="none","fontname"="sans-serif"]
+"ProductCatalogManagementContext" -> "OrdersManagementContext" ["fontsize"="12","style"="bold","label"="Partnership","dir"="none","fontname"="sans-serif"]
+"ProductCatalogManagementContext" -> "InventoryManagementContext" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"PaymentManagementContext" -> "OrdersManagementContext" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="Customer/Supplier","dir"="none","fontname"="sans-serif"]
+"SecurityManagementContext" -> "CustomerManagementContext" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>ACL</font></td></tr>
 </table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
 <tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS</font></td></tr>
 </table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
-"GestionOrdenesContext" -> "GestionClientesContext" ["fontsize"="12","style"="bold","label"="Partnership","dir"="none","fontname"="sans-serif"]
+"SecurityManagementContext" -> "CustomerManagementContext" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>ACL</font></td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS, PL</font></td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"ShippingManagementContext" -> "InventoryManagementContext" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>CF</font></td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">U</td><td sides="trbl" bgcolor="white"><font>OHS, PL</font></td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"ShippingManagementContext" -> "OrdersManagementContext" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">D</td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="Customer/Supplier","dir"="none","fontname"="sans-serif"]
 }
