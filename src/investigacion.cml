@@ -70,5 +70,19 @@ BoundedContext GestionProyectosContext implements GestionProyectosDomain{
 
 }
 BoundedContext GestionFondosContext implements GestionFondosDomain
-BoundedContext GestionSeguridadContext implements GestionSeguridadDomain
-
+BoundedContext GestionSeguridadContext implements GestionSeguridadDomain{
+  Aggregate GestionarSeguridad{
+    Entity Usuario {
+      Long id;
+      String correo;
+      String password;
+      - Rol rol;
+    }
+    enum Rol{
+      ADMIN,
+      RESPONSABLE,
+      INVESTIGADOR,
+      USUARIO
+  }
+}
+}
