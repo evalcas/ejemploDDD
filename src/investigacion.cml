@@ -1,9 +1,4 @@
 /* Example Context Map written with 'ContextMapper DSL' */ 
-BoundedContext GestionProyectosContext implements GestionProyectosDomain
-BoundedContext GestionFondosContext implements GestionFondosDomain
-BoundedContext GestionSeguridadContext implements GestionSeguridadDomain
-
-
 ContextMap Investigacion {
 
     type SYSTEM_LANDSCAPE
@@ -32,7 +27,48 @@ Domain Investigacion {
     Subdomain GestionSeguridadDomain{
       type = GENERIC_SUBDOMAIN
       domainVisionStatement = "Gestion de la seguridad"
-    }
-   
-    
+    } 
 }
+
+
+BoundedContext GestionProyectosContext implements GestionProyectosDomain{
+  Aggregate ProyectoInvestigacion{
+    Entity Investigador{
+        Long id;
+        String nombre;
+        String apellidoPat;
+        String apellidoMat;
+        String dni;
+        Date fechaRegInv;
+        String correo;
+        - List <ProyectoInvestigacion> proyectos;
+
+    }
+
+    Entity ProyectoInvestigacion{
+      Long id;
+      Float presupuestoPry;
+      - Investigador responsable;
+      String tituloPry;
+      Date fechaInicioPry;
+      Date fechaCierrePry;
+      String estadoPry;
+      - List <AvanceProyecto> avances;
+
+    }
+
+    Entity AvanceProyecto {
+      Long id;
+      String descripcionAvance;
+      Float presupuestoAsignado;
+      Float presupuestoGastado;
+      Date fechaRegAvance;
+      String estadoAvance;
+    }
+
+  }
+
+}
+BoundedContext GestionFondosContext implements GestionFondosDomain
+BoundedContext GestionSeguridadContext implements GestionSeguridadDomain
+
